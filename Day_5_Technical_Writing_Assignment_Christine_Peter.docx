@@ -1,0 +1,350 @@
+# DAY 5 ASSIGNMENT: TECHNICAL WRITING
+
+**Name:** Christine Peter
+**Course:** Software Development
+**Topic:** Technical Writing Practice
+
+---
+
+# A) USER MANUAL PROCEDURE (20 MINUTES)
+
+## Task: Setting Up a GitHub Repository from Scratch and Making Your First Commit
+
+### 1. Introduction
+
+This procedure explains how to create a new GitHub repository, connect it to a local computer, and make the first commit. It is designed for beginners who are learning how to use Git and GitHub.
+
+### 2. Prerequisites
+
+Before starting, ensure that you have:
+
+1. A computer with Windows, macOS, or Linux.
+2. A working internet connection.
+3. A GitHub account.
+4. Git installed on your computer.
+5. Visual Studio Code or another code editor.
+6. Basic knowledge of using the command line.
+
+### 3. Step-by-Step Procedure
+
+**Step 1: Open GitHub**
+
+Open your web browser and visit [https://github.com](https://github.com).
+
+Expected result: The GitHub homepage appears.
+
+**Step 2: Sign in to your account**
+
+Enter your GitHub username or email address and password.
+
+Expected result: Your GitHub dashboard opens.
+
+**Step 3: Create a new repository**
+
+Click the + icon in the top-right corner and select New repository.
+
+Expected result: The repository creation page appears.
+
+**Step 4: Enter the repository name**
+
+Type `my-first-project` in the Repository name field.
+
+Expected result: The repository name appears in the field.
+
+**Step 5: Choose repository visibility**
+
+Select Public to make your repository accessible to everyone.
+
+Expected result: The Public option is selected.
+
+**Step 6: Initialize the repository**
+
+Select the Add a README file checkbox.
+
+Expected result: GitHub prepares a README file for the repository.
+
+**Step 7: Create the repository**
+
+Click the Create repository button.
+
+Expected result: Your new repository opens on GitHub.
+
+**Step 8: Open your computer's terminal**
+
+Open Command Prompt or PowerShell on Windows.
+
+Expected result: A command-line window appears.
+
+**Step 9: Create a project folder**
+
+Type the following command:
+
+`mkdir my-first-project`
+
+Expected result: A new folder called my-first-project is created.
+
+**Step 10: Enter the project folder**
+
+Type:
+
+`cd my-first-project`
+
+Expected result: The terminal enters the project folder.
+
+**Step 11: Initialize Git**
+
+Type:
+
+`git init`
+
+Expected result: Git initializes a new local repository.
+
+**Step 12: Create a README file**
+
+Type:
+
+`echo My First Project > README.md`
+
+Expected result: A README.md file is created.
+
+**Step 13: Add the project file to Git**
+
+Type:
+
+`git add README.md`
+
+Expected result: The README file is added to the staging area.
+
+**Step 14: Make the first commit**
+
+Type:
+
+`git commit -m "Initial commit"`
+
+Expected result: Git saves the first version of your project.
+
+**Step 15: Connect the local repository to GitHub**
+
+Copy your GitHub repository URL and type:
+
+`git remote add origin https://github.com/YOUR-USERNAME/my-first-project.git`
+
+Replace YOUR-USERNAME with your actual GitHub username.
+
+Expected result: Your local repository is connected to GitHub.
+
+**Step 16: Rename the branch**
+
+Type:
+
+`git branch -M main`
+
+Expected result: Your current branch is named main.
+
+**Step 17: Upload the project**
+
+Type:
+
+`git push -u origin main`
+
+Expected result: Your local commit is uploaded to GitHub.
+
+### 4. Screenshot Description
+
+**Screenshot 1: GitHub Repository**
+
+The screenshot should show:
+
+- The repository name: my-first-project.
+- The README.md file.
+- The Public repository visibility.
+
+**Screenshot 2: Successful First Commit**
+
+The screenshot should show:
+
+- The terminal window.
+- The `git commit -m "Initial commit"` command.
+- The successful commit message.
+
+**Screenshot 3: Uploaded GitHub Project**
+
+The screenshot should show:
+
+- The GitHub repository page.
+- The README.md file.
+- The uploaded project files and commit history.
+
+### 5. Troubleshooting
+
+**Common Error: Git is not recognized as an internal or external command.**
+
+Cause: Git may not be installed or its installation directory may not be added to the system PATH.
+
+Solution:
+
+1. Download Git from [https://git-scm.com/downloads](https://git-scm.com/downloads).
+2. Install Git on your computer.
+3. Restart Command Prompt or PowerShell.
+4. Type `git --version` to confirm that Git is working.
+
+### 6. Conclusion
+
+By following these steps, a beginner can successfully create a GitHub repository, initialize Git, make a first commit, and upload project files to GitHub. This procedure provides a foundation for managing software projects and collaborating with other developers.
+
+---
+
+# B) API REFERENCE ENTRY (25 MINUTES)
+
+## API Documentation: Create a New Task
+
+### 1. Overview
+
+The Create Task API allows an authenticated user to create a new task within a project management application.
+
+Users can provide a task title, description, assignee, due date, and priority level. Once the task is successfully created, the API returns the task details and a unique task ID.
+
+### 2. Endpoint Information
+
+| Property        | Description                           |
+| --------------- | ------------------------------------- |
+| API Name        | Create Task API                       |
+| HTTP Method     | POST                                  |
+| Endpoint        | `/api/v1/projects/{project_id}/tasks` |
+| Authentication  | Bearer Token                          |
+| Content Type    | application/json                      |
+| Response Format | JSON                                  |
+
+### 3. Request Parameters
+
+**A. Path Parameters**
+
+| Parameter  | Data Type | Requirement | Description                                            |
+| ---------- | --------- | ----------- | ------------------------------------------------------ |
+| project_id | Integer   | Required    | Identifies the project where the task will be created. |
+
+**B. Query Parameters**
+
+No query parameters are required for this endpoint.
+
+**C. Request Body Parameters**
+
+| Parameter   | Data Type     | Requirement | Description                                        |
+| ----------- | ------------- | ----------- | -------------------------------------------------- |
+| title       | String        | Required    | The name of the task.                              |
+| description | String        | Optional    | Provides additional information about the task.    |
+| assignee_id | Integer       | Required    | Identifies the user assigned to complete the task. |
+| due_date    | String (Date) | Required    | Specifies when the task should be completed.       |
+| priority    | String        | Required    | Defines the task priority: low, medium, or high.   |
+
+### 4. Required Request Headers
+
+| Header        | Value                    | Description                              |
+| ------------- | ------------------------ | ---------------------------------------- |
+| Authorization | Bearer YOUR_ACCESS_TOKEN | Authenticates the user.                  |
+| Content-Type  | application/json         | Specifies that the request body is JSON. |
+| Accept        | application/json         | Requests a JSON response.                |
+
+### 5. Example API Request
+
+**HTTP Request:**
+
+`POST /api/v1/projects/101/tasks`
+
+**Request Headers:**
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+Accept: application/json
+```
+
+**Request Body (JSON):**
+
+```json
+{
+  "title": "Complete project documentation",
+  "description": "Prepare and submit the project technical documentation.",
+  "assignee_id": 25,
+  "due_date": "2026-12-15",
+  "priority": "high"
+}
+```
+
+### 6. Successful Response
+
+**HTTP Status Code: 201 Created**
+
+This response means the task has been successfully created.
+
+**Example Response Body:**
+
+```json
+{
+  "success": true,
+  "message": "Task created successfully",
+  "data": {
+    "id": 501,
+    "project_id": 101,
+    "title": "Complete project documentation",
+    "description": "Prepare and submit the project technical documentation.",
+    "assignee_id": 25,
+    "due_date": "2026-12-15",
+    "priority": "high",
+    "status": "pending",
+    "created_at": "2026-11-06T09:00:00Z"
+  }
+}
+```
+
+### 7. HTTP Response Codes
+
+| Status Code | Name                   | Explanation                                                                      |
+| ----------- | ---------------------- | -------------------------------------------------------------------------------- |
+| 201         | Created                | The task was successfully created.                                               |
+| 400         | Bad Request            | The request contains invalid data or an incorrect JSON format.                   |
+| 401         | Unauthorized           | The user has not provided a valid authentication token.                          |
+| 403         | Forbidden              | The authenticated user does not have permission to create tasks in the project.  |
+| 404         | Not Found              | The specified project or assignee does not exist.                                |
+| 409         | Conflict               | The request conflicts with an existing resource or project rule.                 |
+| 415         | Unsupported Media Type | The request does not use the supported JSON content type.                        |
+| 422         | Unprocessable Entity   | The submitted information fails validation, such as an invalid priority or date. |
+| 500         | Internal Server Error  | An unexpected server error occurred.                                             |
+
+### 8. Validation Rules
+
+The API applies the following validation rules:
+
+1. The title must not be empty.
+2. The description is optional.
+3. The assignee_id must identify an existing user.
+4. The due_date must use the YYYY-MM-DD format.
+5. The priority must be low, medium, or high.
+6. The user must be authenticated.
+7. The user must have permission to create tasks in the selected project.
+
+### 9. Example Error Response
+
+**HTTP Status Code: 422 Unprocessable Entity**
+
+```json
+{
+  "success": false,
+  "message": "Validation failed",
+  "errors": {
+    "priority": [
+      "Priority must be low, medium, or high."
+    ]
+  }
+}
+```
+
+### 10. Conclusion
+
+The Create Task API provides a structured way for authenticated users to create tasks in a project management application. It uses the POST HTTP method, accepts JSON data, validates the submitted information, and returns appropriate HTTP response codes.
+
+Good API documentation helps developers understand how to use an endpoint, what information to provide, and how to handle successful and unsuccessful requests.
+
+---
+
+**END OF DAY 5 ASSIGNMENT**
